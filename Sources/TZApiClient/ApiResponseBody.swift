@@ -22,19 +22,19 @@ protocol DataResponse {
 /** Class that represents the Response Body Object of the Response */
 open class APIResponseBody: StatusReponse, DataResponse, InitializableWithData {
     /** Was API Server able to process your request*/
-    var success: Bool = false
+    public var success: Bool = false
     
     /** Timestamp of the response sent by server */
-    var timestamp: TimeInterval = 0
+    public var timestamp: TimeInterval = 0
     
     /** Message from the server. watch this incase the success is false, the reason will be listed here*/
-    var message: String?
+    public var message: String?
     
     /** Optional Message Code */
-    var msgCode: Int?
+    public var msgCode: Int?
     
     /** Whole response object sent by server and converted into JSON Object */
-    var payload: JSON = JSON()
+    public var payload: JSON = JSON()
     
     required public init(data: Data?) {
         guard let data = data else {
