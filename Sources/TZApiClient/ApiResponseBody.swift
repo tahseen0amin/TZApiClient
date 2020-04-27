@@ -65,7 +65,7 @@ open class APIResponseBody: StatusReponse, DataResponse, InitializableWithData {
         }
     }
     
-    func convertDataIntoEntity<T: Codable>(data: Data) throws -> T {
+    public func convertDataIntoEntity<T: Codable>(data: Data) throws -> T {
        return try GenericDecoder<T>(data: data).decodeEntity()
     }
 }
