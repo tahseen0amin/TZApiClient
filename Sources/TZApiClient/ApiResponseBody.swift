@@ -36,7 +36,7 @@ open class APIResponseBody: StatusReponse, DataResponse, InitializableWithData {
     /** Whole response object sent by server and converted into JSON Object */
     var payload: JSON = JSON()
     
-    required public init(data: Data?) throws {
+    required public init(data: Data?) {
         guard let data = data else {
             self.message = "Empty Data Found"
             return
