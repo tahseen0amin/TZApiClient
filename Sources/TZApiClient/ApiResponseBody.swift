@@ -64,6 +64,10 @@ open class APIResponseBody: StatusReponse, DataResponse, InitializableWithData {
             debugPrint(error.localizedDescription)
         }
     }
+    
+    func convertDataIntoEntity<T: Codable>(data: Data) throws -> T {
+       return try GenericDecoder<T>(data: data).decodeEntity()
+    }
 }
 
 
@@ -78,5 +82,10 @@ public struct GenericDecoder<T: Codable> {
             debugPrint(error)
             return nil
         }
+    }
+    
+    func decodeEntity() throws -> T {
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
     }
 }
