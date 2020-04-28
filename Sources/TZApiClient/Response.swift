@@ -14,9 +14,9 @@ public protocol InitializableWithData {
 /** This wraps a successful API response and it includes the generic data as well. The reason why we need this wrapper is that we want to pass to the client the status code and the raw response as well
  */
 public struct Response<T: InitializableWithData> {
-    let entity: T
-    let httpUrlResponse: HTTPURLResponse
-    let data: Data?
+    public let entity: T
+    public let httpUrlResponse: HTTPURLResponse
+    public let data: Data?
     
     init(data: Data?, httpUrlResponse: HTTPURLResponse) throws {
         do {

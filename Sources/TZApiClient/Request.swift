@@ -12,8 +12,8 @@ public protocol APIRequest {
 }
 
 public struct Endpoint {
-    let path: String
-    let queryItems: [URLQueryItem]
+    public let path: String
+    public let queryItems: [URLQueryItem]
 }
 
 public extension APIRequest {
