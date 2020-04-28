@@ -11,10 +11,7 @@ public protocol APIRequest {
     var urlRequest: URLRequest { get }
 }
 
-public struct Endpoint {
-    public var path: String
-    public var queryItems: [URLQueryItem] = []
-}
+
 
 public extension APIRequest {
     /** Returns the URLRequest Object from the String */

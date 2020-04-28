@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+public struct Endpoint {
+    var path: String
+    var queryItems: [URLQueryItem] = []
+    
+}
+
 open class TZApiClient: NSObject, APIClientImplementation {
     public var urlSession: URLSessionProtocol
     
