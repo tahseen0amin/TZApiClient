@@ -11,7 +11,9 @@ import UIKit
 public struct Endpoint {
     var path: String
     var queryItems: [URLQueryItem] = []
-    
+    init(path: String){
+        self.path = path
+    }
 }
 
 open class TZApiClient: NSObject, APIClientImplementation {
