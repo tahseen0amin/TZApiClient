@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 public struct Endpoint {
-    var path: String
-    var queryItems: [URLQueryItem] = []
-    init(path: String){
+    public var path: String
+    public var queryItems: [URLQueryItem] = []
+    public init(path: String){
         self.path = path
     }
 }
