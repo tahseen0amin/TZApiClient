@@ -9,20 +9,20 @@ import Foundation
 import UIKit
 
 open class TZApiClient: NSObject, APIClientImplementation {
-    var urlSession: URLSessionProtocol
+    public var urlSession: URLSessionProtocol
     
-    init(urlSessionConfiguration: URLSessionConfiguration, completionHandlerQueue: OperationQueue) {
+    public init(urlSessionConfiguration: URLSessionConfiguration, completionHandlerQueue: OperationQueue) {
         urlSession = URLSession(configuration: urlSessionConfiguration, delegate: nil, delegateQueue: completionHandlerQueue)
         super.init()
         urlSession = URLSession(configuration: urlSessionConfiguration, delegate: self, delegateQueue: completionHandlerQueue)
     }
     
     // This should be used mainly for testing purposes
-    init(urlSession: URLSessionProtocol) {
+    public init(urlSession: URLSessionProtocol) {
         self.urlSession = urlSession
     }
     
-    func execute<T>(request: APIRequest, completionHandler: @escaping (Result<Response<T>>) -> Void) where T : InitializableWithData
+    public func execute<T>(request: APIRequest, completionHandler: @escaping (Result<Response<T>>) -> Void) where T : InitializableWithData
     {
         debugPrint(request.urlRequest.url!)
         let dataTask = urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
@@ -63,18 +63,18 @@ extension TZApiClient: URLSessionDelegate {
     }
 }
 
-typealias Handler = (Data?, URLResponse?, Error?) -> Void
+public typealias Handler = (Data?, URLResponse?, Error?) -> Void
 
-protocol APIClientImplementation {
+public protocol APIClientImplementation {
     func execute<T>(request: APIRequest, completionHandler: @escaping (_ result: Result<Response<T>>) -> Void)
 }
 
-protocol URLSessionProtocol {
+public protocol URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler: @escaping Handler) -> URLSessionDataTask
 }
 extension URLSession: URLSessionProtocol { }
 
-enum Result<Value> {
+public enum Result<Value> {
     case success(Value)
     case failure(Error)
 }

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol InitializableWithData {
+public protocol InitializableWithData {
     init(data: Data?) throws
 }
 
 /** This wraps a successful API response and it includes the generic data as well. The reason why we need this wrapper is that we want to pass to the client the status code and the raw response as well
  */
-struct Response<T: InitializableWithData> {
+public struct Response<T: InitializableWithData> {
     let entity: T
     let httpUrlResponse: HTTPURLResponse
     let data: Data?
@@ -32,7 +32,7 @@ struct Response<T: InitializableWithData> {
 /** Some endpoints might return a 204 No Content. We can't have Void implement InitializableWithData so we've created a "Void" response.
 */
 public struct VoidResponse: InitializableWithData {
-    init(data: Data?) throws {}
+    public init(data: Data?) throws {}
 }
 
 
