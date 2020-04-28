@@ -8,9 +8,9 @@
 import Foundation
 
 open class ApiWorker {
-    let client: TZApiClient
+    public let client: TZApiClient
     
-    init(client: TZApiClient?) {
+    public init(client: TZApiClient?) {
         if let c = client {
             self.client = c
         } else {
@@ -18,7 +18,7 @@ open class ApiWorker {
         }
     }
     
-    init() {
+    public init() {
         self.client = TZApiClient(urlSessionConfiguration: .default, completionHandlerQueue: .main)
     }
 }
