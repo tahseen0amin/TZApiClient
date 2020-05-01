@@ -11,8 +11,6 @@ public protocol APIRequest {
     var urlRequest: URLRequest { get }
 }
 
-
-
 public extension APIRequest {
     /** Returns the URLRequest Object from the String */
     func initBaseRequest(withURLString string: String) -> URLRequest {

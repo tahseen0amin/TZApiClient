@@ -10,9 +10,10 @@ import UIKit
 
 public struct Endpoint {
     public var path: String
-    public var queryItems: [URLQueryItem] = []
-    public init(path: String){
+    public var queryItems: [URLQueryItem]
+    public init(path: String, queryItems: [URLQueryItem] = []){
         self.path = path
+        self.queryItems = queryItems
     }
 }
 
